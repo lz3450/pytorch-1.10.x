@@ -25,10 +25,10 @@ export PYTORCH_BUILD_NUMBER=0
 
 export TORCH_CUDA_ARCH_LIST="5.3"
 
-# python3 setup.py clean
-# python3 setup.py build --cmake-only > build.log 2>&1
-# ccmake build
-# cp -v build/CMakeCache.txt build-CMakeCache.txt
+python3 setup.py clean
+python3 setup.py build --cmake-only > build.log 2>&1
+ccmake build
+cp -v build/CMakeCache.txt build-CMakeCache.txt
 python3 setup.py build
 # python3 setup.py install --user
 mkdir -p build/scripts-3.6

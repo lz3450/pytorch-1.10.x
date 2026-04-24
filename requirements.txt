@@ -6,7 +6,7 @@ numpy
 psutil
 pyyaml
 requests
-setuptools
+setuptools==59.5.0
 six
 types-dataclasses
 typing_extensions
