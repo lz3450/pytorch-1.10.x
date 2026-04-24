@@ -17,6 +17,8 @@ export MAX_JOBS=2
 
 export BUILD_TEST=False
 export USE_DISTRIBUTED=OFF
+export USE_NCCL=OFF
+export USE_RCCL=OFF
 
 export PYTORCH_BUILD_VERSION=1.10.3
 export PYTORCH_BUILD_NUMBER=0
@@ -29,4 +31,5 @@ export TORCH_CUDA_ARCH_LIST="5.3"
 # cp -v build/CMakeCache.txt build-CMakeCache.txt
 python3 setup.py build
 # python3 setup.py install --user
+mkdir -p build/scripts-3.6
 python3 setup.py bdist_wheel
