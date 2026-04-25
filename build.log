@@ -267,23 +267,6 @@ Call Stack (most recent call first):
 
 
 -- Added CUDA NVCC flags for: -gencode;arch=compute_53,code=sm_53
-CMake Warning at cmake/public/utils.cmake:365 (message):
-  In the future we will require one to explicitly pass TORCH_CUDA_ARCH_LIST
-  to cmake instead of implicitly setting it as an env variable.  This will
-  become a FATAL_ERROR in future version of pytorch.
-Call Stack (most recent call first):
-  cmake/External/nccl.cmake:13 (torch_cuda_get_nvcc_gencode_flag)
-  cmake/Dependencies.cmake:1333 (include)
-  CMakeLists.txt:653 (include)
-
-
-CMake Warning at cmake/External/nccl.cmake:66 (message):
-  Objcopy version is too old to support NCCL library slimming
-Call Stack (most recent call first):
-  cmake/Dependencies.cmake:1333 (include)
-  CMakeLists.txt:653 (include)
-
-
 -- Could NOT find CUB (missing: CUB_INCLUDE_DIR) 
 CMake Warning at cmake/Dependencies.cmake:1458 (message):
   Metal is only used in ios builds.
@@ -583,7 +566,7 @@ INFO CUPTI_INCLUDE_DIR = /usr/local/cuda/include
 -- COMPILER_SUPPORTS_OPENMP : 1
 AT_INSTALL_INCLUDE_DIR include/ATen/core
 core header install: /home/kzl/Projects/pytorch/build/aten/src/ATen/core/TensorBody.h
--- Include NCCL operators
+-- NCCL operators skipped due to no CUDA support
 -- Excluding FakeLowP operators
 -- Excluding ideep operators as we are not using ideep
 -- Excluding image processing operators due to no opencv
@@ -710,8 +693,7 @@ CMake Warning at CMakeLists.txt:985 (message):
 --   USE_FFTW              : OFF
 --   USE_MKL               : OFF
 --   USE_MKLDNN            : OFF
---   USE_NCCL              : ON
---     USE_SYSTEM_NCCL     : OFF
+--   USE_NCCL              : OFF
 --   USE_NNPACK            : ON
 --   USE_NUMPY             : ON
 --   USE_OBSERVERS         : ON
@@ -737,5 +719,5 @@ CMake Warning at CMakeLists.txt:985 (message):
 -- Build files have been written to: /home/kzl/Projects/pytorch/build
 Building wheel torch-1.10.3
 -- Building version 1.10.3
-cmake -GNinja -DBUILD_PYTHON=True -DBUILD_TEST=False -DCMAKE_BUILD_TYPE=Release -DCMAKE_GENERATOR=Ninja -DCMAKE_INSTALL_PREFIX=/home/kzl/Projects/pytorch/torch -DCMAKE_PREFIX_PATH=/usr/lib/python3.6/site-packages -DNUMPY_INCLUDE_DIR=/home/kzl/.local/lib/python3.6/site-packages/numpy/core/include -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/libpython3.6m.so.1.0 -DTORCH_BUILD_VERSION=1.10.3 -DUSE_DISTRIBUTED=OFF -DUSE_NUMPY=True /home/kzl/Projects/pytorch
+cmake -GNinja -DBUILD_PYTHON=True -DBUILD_TEST=False -DCMAKE_BUILD_TYPE=Release -DCMAKE_GENERATOR=Ninja -DCMAKE_INSTALL_PREFIX=/home/kzl/Projects/pytorch/torch -DCMAKE_PREFIX_PATH=/usr/lib/python3.6/site-packages -DNUMPY_INCLUDE_DIR=/home/kzl/.local/lib/python3.6/site-packages/numpy/core/include -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/libpython3.6m.so.1.0 -DTORCH_BUILD_VERSION=1.10.3 -DUSE_DISTRIBUTED=OFF -DUSE_NCCL=OFF -DUSE_NUMPY=True -DUSE_RCCL=OFF /home/kzl/Projects/pytorch
 Finished running cmake. Run "ccmake build" or "cmake-gui build" to adjust build options and "python setup.py install" to build.
